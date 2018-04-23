@@ -2,34 +2,30 @@
 <html>
 <head>
 	<title>Login Form</title>
+<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
-<form action="formulir.html" method="get">
-	Nama : <input type="text" name="nama" value="Nama Kamu">
+	<div class="headerform">
+		Formulir pendaftaran
+	</div>
 	<br>
-	Tempat : <input type="text" name="Tempat">
+	<div class="login">
+<form action="succes.php" method="get">
+	Nama : <input type="text" name="nama" >
+	<br>
+	Tempat : <input type="text" name="Tempat" >
 	<br>
 	Tanggal Lahir : 
-	<input style="width:40px" type="text" name="Tanggal">
-	<select name="Tanggal Lahir">
-		<option value="Januari">Januari</option>
-		<option>Febuari</option>
-		<option>Maret</option>
-		<option>April</option>
-		<option>Mei</option>
-		<option>Juni</option>
-		<option>Juli</option>
-		<option>Agustus</option>
-		<option>September</option>
-		<option>Oktober</option>
-		<option>November</option>
-		<option>Desember</option>
-	<input style="width:70px" type="text" name="Tahun">
-	</select>
+	<input style="width:250px;" type="date" name="Tanggal" >
 	<br>
-<input type="submit" value="Login" name="Submit">
-
-
+	Email : 
+	<input style="width:250px" type="Email" name="username">
+	<br>
+	Phone Number:
+	<input type="text" name="phonenumber">
+	<br>
+<input class="button" type="submit" value="Daftar">
 </form>
+</div>
 </body>
 </html>

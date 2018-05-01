@@ -1,46 +1,113 @@
-    <!doctype html>  
-    <html>  
-    <head>  
-    <title>Register</title>  
-        <style>   
-            body{  
-        margin-top: 100px;  
-        margin-bottom: 100px;  
-        margin-right: 150px;  
-        margin-left: 80px;  
-        background-color: azure ;  
-        color: palevioletred;  
+<!doctype html>  
+<html>  
+<head>  
+ <title>Register</title>  
+<style>   
+ body{      
+        margin:0%;  
+        background-color: #bbff99 ;    
         font-family: verdana;  
         font-size: 100%  
           
-            }  
-                h1 {  
+        }
+
+div.header{
+        color: #000;
+        text-align: left;
+        padding: 1em 9.3em 1em ;
+        background-color: #44cc00;
+        font-size: 2em;
+}
+h1 {  
+        text-align: center;
         color: indigo;  
         font-family: verdana;  
-        font-size: 100%;  
-    }  
-             h2 {  
-        color: indigo;  
-        font-family: verdana;  
-        font-size: 100%;  
-    }
+        font-size: 2em;  
+}  
+.kotak{
+            background-color: #fff;
+            text-align: left;
+            border-radius: 3px;
+            padding: 1em 3em 1em 2em;
+            margin:1em auto;
+            width: 50em;            
+}
+.a1{
+    height: 1.4em;
+    padding: 5px;
+    width: 95%;
+    background: #efefef;
+    border: 0;
+    font-size: 10pt;
+    margin: 6px 0px;
+}
+td {
+    padding: 2px;
+}
+label{
+    font-size: 10pt;
+}
+.a2{
+  float: right;
+  background: #3498db;
+  color: #fff;
+  border: 0;
+  padding: 5px 8px;
+  margin: 20px 0px;
+  width: 15%;
+  font-size: 0.8em;
+  height: 3em;
+}
+
 </style> 
     </head>  
     <body>  
          
-        <center><h1>CREATE REGISTRATION AND LOGIN FORM USING PHP AND MYSQL</h1></center>    
-        <center><h2>Registration Form</h2></center>  
-    <form action="" method="POST">  
-        <legend>  
-        <fieldset>  
-    Nama : <input type="text" name="nama" id="nama"><br>
-    Username: <input type="text" name="username" id="username"><br />  
-    Password: <input type="password" name="password" id="password"><br/>   
-    <input type="submit" value="Register" name="submit" />  
-                  
-            </fieldset>  
-            </legend>  
-    </form>  
+    <div class="header">
+        TulisanTangan
+    </div>    
+           <br>
+        <div class="kotak">
+    <form action="" method="POST">
+    <table style="width: 50em;">
+        <br>
+        <center><content style="font-size: 1.4em ">Pendaftaran TulisanTangan</content></center>
+        <br><br>
+    <tr>    
+    <td><label>Nama :  </label></td> <td><input class="a1" type="text" name="nama" id="nama"></td>
+    </tr>
+    <tr>
+        <td><label>Username:  </label></td> <td><input class="a1" type="text" name="username" id="username"></td>
+    </tr>  
+    <tr>
+        <td><label>Password:  </label></td> <td><input class="a1" type="password" name="password" id="password"><td>
+    </tr>
+    <tr> <td colspan="2"></td>
+    </tr>
+    <tr>
+        <td><label>Jenis Kelamin:  </label></td> <td><input type="radio" name="gender"
+      <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
+<input type="radio" name="gender"
+<?php if (isset($gender) && $gender=="male") echo "checked";?>
+value="male">Male
+    </tr>
+    <tr>
+        <td><label>Tempat:  </label></td> <td><input class="a1" type="text" name="tempat" id="tempat"></td>
+    </tr>
+    <tr>
+        <td><label>Tanggal Lahir:  </label></td> <td><input class="a1" type="date" name="tanggallahir" id="tanggallahir"></td>
+    </tr>
+    <tr>
+        <td><label>Email: </label></td> <td><input class="a1" type="email" name="email" id="email"></td>
+    </tr>
+    <tr>
+        <td><label>Phone Number:  </label></td> <td><input class="a1" type="text" name="phonenumber" id="phonenumber"></td>
+    </tr>
+    <tr>
+    <td colspan="2" ><input class="a2" type="submit" value="Register" name="submit" /></td></tr>
+    </table>
+    </form>
+    </div>  
     <?php  
     if(isset($_POST["submit"])){  
     if(!empty($_POST['username']) && !empty($_POST['password'])) {  

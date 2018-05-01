@@ -28,7 +28,7 @@
 		<input type="submit" value="Login" class="tombol">
 
 	</div>
-	<a class="tombol" href="signup.php">Daftar Baru</a>
+	<a class="tombol" href="register.php">Daftar Baru</a>
 </form>
 </div>
 <br><br>

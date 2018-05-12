@@ -3,7 +3,7 @@
 <head>  
  <title>Register</title>  
 <style>   
- body{      
+body{      
         margin:0%;  
         background-color: #bbff99 ;    
         font-family: verdana;  
@@ -58,7 +58,20 @@ label{
   font-size: 0.8em;
   height: 3em;
 }
-
+div.footer{
+  background-color: #f2f2f2;
+  padding: 1em;
+  text-align: center;
+  line-height: 5em;
+  font-size: 1.5em;
+  height: 5em;
+  font-size: 0.9em;
+  bottom: 0;
+  width: 100%;
+}
+input[type="submit"]:hover{
+    opacity: 1;
+}
 </style> 
     </head>  
     <body>  
@@ -85,11 +98,8 @@ label{
     <tr> <td colspan="2"></td>
     </tr>
     <tr>
-        <td><label>Jenis Kelamin:  </label></td> <td><input type="radio" name="gender"
-      <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
-<input type="radio" name="gender"
-<?php if (isset($gender) && $gender=="male") echo "checked";?>
-value="male">Male
+        <td><label>Jenis Kelamin:  </label></td> <td><input type="radio" name="gender" value="female">Female
+<input type="radio" name="gender" value="male">Male
     </tr>
     <tr>
         <td><label>Tempat:  </label></td> <td><input class="a1" type="text" name="tempat" id="tempat"></td>
@@ -114,6 +124,11 @@ value="male">Male
         $nama=$_POST['nama'];
         $username=$_POST['username'];  
         $password=$_POST['password'];
+        $gender=$_POST['gender'];
+        $tempat=$_POST['tempat'];
+        $tanggallahir=$_POST['tanggallahir'];
+        $email=$_POST['email'];
+        $phonenumber=$_POST['phonenumber'];
         $con=mysqli_connect('localhost','root','','tulisantangan') or die(mysqli_error());  
         mysqli_select_db($con,'tulisantangan') or die("cannot select DB");  
       
@@ -121,24 +136,55 @@ value="male">Male
         $numrows=mysqli_num_rows($query);  
         if($numrows==0)  
         {  
-        $sql="INSERT INTO user(nama,username,password) VALUES ('$nama','$username','$password')";  
+        $sql="INSERT INTO user(nama,username,password,Jenis Kelamin,Tempat,Tanggal Lahir,Email, PhoneNumber) VALUES ('$nama','$username','$password','$gender','$tempat','$tanggallahir','$email','$phonenumber')";  
       
         $result=mysqli_query($con,$sql);  
             if($result){
             $last_id = mysqli_insert_id($con); 
         echo "Account Successfully Created. Last inserted ID is: ".$last_id;  
-        } else {  
+        } else {
         echo "Failure!";  
-        }  
-      
-        } else {  
-        echo "That username already exists! Please try again with another.";  
-        }  
-      
-    } else {  
-        echo "All fields are required!";  
-    }  
-    }  
-    ?>  
+        }    
+    }
+    
+$nameErr = $emailErr = $genderErr = $websiteErr = "";
+$name = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["name"])) {
+    $nameErr = "Name is required";
+  } else {
+    $name = test_input($_POST["name"]);
+    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+      $nameErr = "Only letters and white space allowed";
+    }
+  }
+  
+  if (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+  } else {
+    $email = test_input($_POST["email"]);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $emailErr = "Invalid email format";
+    }
+  }
+
+  if (empty($_POST["gender"])) {
+    $genderErr = "Gender is required";
+  } else {
+    $gender = test_input($_POST["gender"]);
+  }
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+    <br>
+    <div class="footer">
+    @Copyright Stendy N Taufiq</div>  
     </body>  
-    </html>   
+</html>   
